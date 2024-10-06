@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
+    
     public double[] arr;
     public int size;
     public int capacity;
