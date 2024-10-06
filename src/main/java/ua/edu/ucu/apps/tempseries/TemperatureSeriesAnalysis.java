@@ -3,9 +3,6 @@ package ua.edu.ucu.apps.tempseries;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
-import lombok.Getter;
-
-@Getter
 public class TemperatureSeriesAnalysis {
 
     private static final int MIN_TEMP = -273;
@@ -20,14 +17,19 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        for (double el: temperatureSeries) {
+        double[] tempCopy = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
+        for (double el:tempCopy) {
             if (el < MIN_TEMP) {
                 throw new InputMismatchException();
             }
         }
-        this.arr = temperatureSeries;
+        this.arr = tempCopy;
         this.size = temperatureSeries.length;
         this.capacity = temperatureSeries.length;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public double average() {
@@ -173,12 +175,11 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] sortTemps() {
-    if (size <= 1) {
-        return arr;
-    }
-    double[] sortedArr = Arrays.copyOf(arr, size);
-    quickSort(sortedArr, 0, sortedArr.length - 1);
-    return sortedArr;
+        double[] sortedArr = Arrays.copyOf(arr, size);
+        if (size > 1) {
+            quickSort(sortedArr, 0, sortedArr.length - 1);
+        }
+        return sortedArr;
     }
 
     private void quickSort(double[] array, int low, int high) {
