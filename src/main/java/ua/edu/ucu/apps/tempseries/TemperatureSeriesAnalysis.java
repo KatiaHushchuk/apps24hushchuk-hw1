@@ -30,7 +30,7 @@ public class TemperatureSeriesAnalysis {
                 throw new InputMismatchException();
             }
         }
-        this.arr = Arrays.copyOf(temperatureSeries, temperatureSeries.length);;
+        this.arr = tempCopy;
         this.size = temperatureSeries.length;
         this.capacity = temperatureSeries.length;
     }
