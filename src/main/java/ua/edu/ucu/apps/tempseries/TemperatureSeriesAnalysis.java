@@ -17,7 +17,14 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        double[] tempCopy = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
+        if (temperatureSeries == null || temperatureSeries.length == 0) {
+            this.arr = new double[0];
+            this.size = 0;
+            this.capacity = 0;
+            return;
+        }
+        double[] tempCopy = Arrays.copyOf(temperatureSeries, 
+        temperatureSeries.length);
         for (double el:tempCopy) {
             if (el < MIN_TEMP) {
                 throw new InputMismatchException();
@@ -27,7 +34,7 @@ public class TemperatureSeriesAnalysis {
         this.size = temperatureSeries.length;
         this.capacity = temperatureSeries.length;
     }
-
+    
     public int getSize() {
         return size;
     }
