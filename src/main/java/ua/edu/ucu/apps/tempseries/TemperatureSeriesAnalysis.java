@@ -8,10 +8,10 @@ import lombok.Getter;
 @Getter
 public class TemperatureSeriesAnalysis {
 
+    private static final int MIN_TEMP = -273;
     private double[] arr;
     private int size;
     private int capacity;
-    private static final int MIN_TEMP = -273;
 
     public TemperatureSeriesAnalysis() {
         this.arr = new double[0];
