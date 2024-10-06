@@ -17,7 +17,6 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = 
         new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = -1.0;
-
         double actualResult = seriesAnalysis.average();
         assertEquals(expResult, actualResult, 0.00001);
     }
@@ -344,11 +343,9 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {1.0, 2.0, 3.0};
         TemperatureSeriesAnalysis seriesAnalysis =
         new TemperatureSeriesAnalysis(temperatureSeries);
-        assertEquals(3, seriesAnalysis.size);
+        assertEquals(3, seriesAnalysis.getSize());
         seriesAnalysis.reset();
-        assertEquals(0, seriesAnalysis.size);
-        assertEquals(0, seriesAnalysis.arr.length);
-        assertEquals(0, seriesAnalysis.capacity);
+        assertEquals(0, seriesAnalysis.getSize());
     }
 
     @Test
@@ -356,11 +353,9 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis =
         new TemperatureSeriesAnalysis(temperatureSeries);
-        assertEquals(0, seriesAnalysis.size);
+        assertEquals(0, seriesAnalysis.getSize());
         seriesAnalysis.reset();
-        assertEquals(0, seriesAnalysis.size);
-        assertEquals(0, seriesAnalysis.arr.length);
-        assertEquals(0, seriesAnalysis.capacity);
+        assertEquals(0, seriesAnalysis.getSize());
     }
 
     @Test
@@ -368,11 +363,9 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis =
         new TemperatureSeriesAnalysis();
         seriesAnalysis.addTemps(1.0, 8.0, -3.0);
-        assertEquals(3, seriesAnalysis.size);
+        assertEquals(3, seriesAnalysis.getSize());
         seriesAnalysis.reset();
-        assertEquals(0, seriesAnalysis.size);
-        assertEquals(0, seriesAnalysis.arr.length);
-        assertEquals(0, seriesAnalysis.capacity);
+        assertEquals(0, seriesAnalysis.getSize());
     }
 
     @Test

@@ -3,11 +3,14 @@ package ua.edu.ucu.apps.tempseries;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
+import lombok.Getter;
+
+@Getter
 public class TemperatureSeriesAnalysis {
-    
-    public double[] arr;
-    public int size;
-    public int capacity;
+
+    private double[] arr;
+    private int size;
+    private int capacity;
 
     public TemperatureSeriesAnalysis() {
         this.arr = new double[0];
