@@ -11,6 +11,7 @@ public class TemperatureSeriesAnalysis {
     private double[] arr;
     private int size;
     private int capacity;
+    private static final int MIN_TEMP = -273;
 
     public TemperatureSeriesAnalysis() {
         this.arr = new double[0];
@@ -19,8 +20,8 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        for (double el: temperatureSeries){
-            if (el < -273) {
+        for (double el: temperatureSeries) {
+            if (el < MIN_TEMP) {
                 throw new InputMismatchException();
             }
         }
@@ -50,8 +51,8 @@ public class TemperatureSeriesAnalysis {
         double sum = 0;
         int quantity = 0;
         for (double el:arr) {
-            quantity ++;
-            sum += Math.pow((el - aver), 2);
+            quantity++;
+            sum += (el - aver)*(el - aver);
         }
         return Math.sqrt(sum / quantity);
     }
@@ -88,8 +89,8 @@ public class TemperatureSeriesAnalysis {
         }
         double res = arr[0];
         for (double el:arr) {
-            if (Math.abs(el) < Math.abs(res) || 
-            (Math.abs(el) == Math.abs(res) && el > res)) {
+            if (Math.abs(el) < Math.abs(res)
+            || (Math.abs(el) == Math.abs(res) && el > res)) {
                 res = el;
             }
         }
@@ -226,7 +227,7 @@ public class TemperatureSeriesAnalysis {
             arr = Arrays.copyOf(arr, capacity);
         }
         for (double temp : temps) {
-            if (temp < -273) {
+            if (temp < MIN_TEMP) {
                 throw new InputMismatchException();
             }
             arr[size] = temp;
